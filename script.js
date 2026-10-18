@@ -40,15 +40,23 @@ const updateHeader = () => header?.classList.toggle("is-scrolled", window.scroll
 window.addEventListener("scroll", updateHeader, { passive: true });
 updateHeader();
 
+const lockBodyScroll = (lock) => {
+  document.body.style.overflow = lock ? "hidden" : "";
+  document.documentElement.style.overflow = lock ? "hidden" : "";
+};
+
 const closeMenu = () => {
   menuToggle?.setAttribute("aria-expanded", "false");
   siteNav?.classList.remove("is-open");
+  lockBodyScroll(false);
 };
 
 menuToggle?.addEventListener("click", () => {
   const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
   menuToggle.setAttribute("aria-expanded", String(!isOpen));
-  siteNav?.classList.toggle("is-open", !isOpen);
+  const opening = !isOpen;
+  siteNav?.classList.toggle("is-open", opening);
+  lockBodyScroll(opening);
 });
 
 siteNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));

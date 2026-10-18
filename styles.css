@@ -194,12 +194,13 @@ section[id] { scroll-margin-top: 100px; }
 .project-tech-logo:hover, .project-tech-logo:focus-visible { z-index: 5; transform: translateY(-2px) scale(1.06); }
 .project-tech-logo:hover::after, .project-tech-logo:focus-visible::after { opacity: 1; transform: translate(-50%, -4px); }
 .project-actions { grid-column: 2; grid-row: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-.project-action { display: grid; width: 100%; height: 70px; place-items: center; border-radius: 21px; color: #515b6d; cursor: pointer; text-decoration: none; }
+.project-action { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; height: 70px; padding: 0 16px; border: 1px solid #e1e4eb; border-radius: 21px; color: #515b6d; background: rgb(255 255 255 / 94%); cursor: pointer; text-decoration: none; font-size: 12px; font-weight: 700; transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease, background .3s ease, color .3s ease; overflow: hidden; }
 .project-action:hover:not(:disabled), .project-action:focus-visible { transform: translateY(-3px); border-color: #ced5e5; box-shadow: 0 12px 25px rgb(42 53 92 / 9%); outline: none; }
 .project-action:focus-visible { box-shadow: 0 0 0 3px rgb(105 136 244 / 18%), 0 12px 25px rgb(42 53 92 / 9%); }
-.project-action svg { width: 25px; height: 25px; }
-.project-action--placeholder svg { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
-.project-action[href] svg { fill: currentColor; }
+.project-action svg { width: 20px; height: 20px; fill: currentColor; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
+.project-action span { transition: transform .3s ease; }
+.project-action .action-arrow { width: 16px; height: 16px; margin-left: 4px; transition: transform .3s ease; }
+.project-action:hover .action-arrow { transform: translateX(4px); }
 .project-action:disabled { opacity: .58; cursor: not-allowed; }
 .project-row--reverse .project-preview { grid-column: 2; }
 .project-row--reverse .project-details, .project-row--reverse .project-actions { grid-column: 1; }
@@ -307,6 +308,7 @@ section[id] { scroll-margin-top: 100px; }
   .hero { grid-template-columns: 1fr; padding-top: 74px; padding-bottom: 105px; }
   .hero-copy { max-width: 520px; }
   .hero h1 { margin-top: 21px; font-size: clamp(42px, 11vw, 62px); }
+  .name-highlight { white-space: normal; }
   .hero-socials { margin-top: 29px; }
   .hero-art { min-height: 396px; margin-top: 22px; }
   .profile-card { width: min(300px, 77%); }
